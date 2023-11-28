@@ -1,0 +1,421 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+@layer base {
+
+  html {
+    --app-dark: rgb(255, 255, 255);
+    --app--dark: theme(colors.slate.900);
+    --app--dark: theme(colors.slate.800);
+    --app-light: theme(colors.gray.200);
+    --app--light: theme(colors.slate.200);
+    --app-shadow: #00000025;
+    --app-primary: #ff4c59;
+    --error: theme(colors.red.600);
+    --success: theme(colors.green.600);
+    --danger: theme(colors.yellow.600);
+    --text : theme(colors.black);
+
+  }
+
+  * {
+    @apply text-base font-light
+  }
+
+  body {
+    background-color: var(--app-dark);
+    color: var(--app-light);
+    height: 100vh;
+    
+  }
+  #__next {
+    height: 100vh;
+    
+  }
+
+}
+@layer components{
+  .card {
+    width: 90%;
+    height: 350px;
+    background: #313131;
+    border-radius: 10px;
+    ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .img {
+    height: 30%;
+    position: absolute;
+    transition: 0.2s ease-in-out;
+    z-index: 1;
+  }
+  
+  .textBox {
+   padding: 13px;
+   
+    opacity: 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: 0.2s ease-in-out;
+    z-index: 2;
+  }
+  
+  .textBox > .text {
+    font-weight: bold;
+  }
+  
+  .textBox > .head {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    word-break: break-all;
+    text-decoration: 1px underline ;
+  }
+  
+  .textBox > .price {
+    font-size: 17px;
+  }
+  
+  .textBox > span {
+    font-size: 12px;
+    color: rgb(248, 248, 248);
+  }
+  
+  .card:hover > .textBox {
+    opacity: 1;
+  }
+  
+ 
+  .card:hover > .apa {
+    
+    height: 65%;
+    filter: blur(7px);
+    animation: anim 3s infinite;
+  }
+  @keyframes anim {
+    0% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      transform: translateY(-20px);
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .card:hover {
+    transform: scale(1.02) rotate(-0.1deg);
+  }
+  
+  .InputContainer {
+    width: 320px;
+  height: 50px;
+  display: flex;
+  /* margin-left: auto; */
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--app-primary);
+  padding-left: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075),-0px -0.2px 1px;
+}
+
+.input {
+  width: 100%;
+  height: 35px; /* Adjusted height for a more standard input size */
+  border: 1px solid var(--app-light); /* Added a subtle border */
+  background-color: #fff; 
+  padding: 10px;
+  border-radius:3px ;
+  outline: none;
+  font-size: 1em; 
+  color: #333; 
+  transition: border-color 0.3s ease;
+
+
+  
+
+  &::placeholder {
+    color: #aaa; 
+  }
+
+
+  caret-color: #4CAF50; 
+}
+
+
+.labelforsearch {
+  cursor: text;
+  padding: 0px 12px;
+}
+
+.searchIcon {
+  width: 13px;
+}
+
+.bordeer {
+  height: 40%;
+  width: 1.3px;
+  background-color: rgb(223, 223, 223);
+}
+
+.micIcon {
+  width: 12px;
+}
+
+.micButton {
+  padding: 0px 15px 0px 12px;
+  border: none;
+  background-color: transparent;
+  height: 40px;
+  cursor: pointer;
+  transition-duration: .3s;
+}
+
+.searchIcon path {
+  fill: rgb(255, 255, 255);
+}
+
+.micIcon path {
+  fill: rgb(254, 254, 254);
+}
+
+.micButton:hover {
+  
+  transition-duration: .3s;
+}
+.containert {
+  width: 100%;
+  height: 100%;
+  --color: #E1E1E1;
+  background-color: #F3F3F3;
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+      linear-gradient(10deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-size: 65px 15px;
+}
+.buttons {
+  display: flex;
+  height: 44px;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+}
+.rotatesvg{
+  transform: rotate(30deg);
+  margin-right: 3px;
+  
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+button svg {
+  margin-right: 3px;
+  
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+button span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+button:hover .svgc {
+  transform: translateX(5px) rotate(90deg);
+}
+
+button:hover span {
+  transform: translateX(7px);
+}
+/* Updated CSS with modified class names */
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.form-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
+}
+
+.form-title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.form-title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.form-title::before,
+.form-title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #00bfff;
+}
+
+.form-message, 
+.form-signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-signin {
+  text-align: center;
+}
+
+.form-signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.form-signin a {
+  color: #00bfff;
+}
+
+.form-flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form-label {
+  position: relative;
+}
+
+.form-label .form-input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form-label .form-input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form-label .form-input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form-label .form-input:focus + span,
+.form-label .form-input:valid + span {
+  color: #00bfff;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form-input {
+  font-size: medium;
+}
+
+.form-submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #00bfff;
+}
+
+.form-submit:hover {
+  background-color: #00bfff96;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+.text{
+
+  @apply text-black 
+}
+
+}
+@layer utilities{
+
+}
